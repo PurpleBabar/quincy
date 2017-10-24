@@ -1,0 +1,23 @@
+{
+  "name": "quincy",
+  "version": "0.0.1",
+  "description": "",
+  "main": "quincy.js",
+  "dependencies": {
+    "axios": "^0.17.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PurpleBabar/quincy.git"
+  },
+  "author": "purplebabar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PurpleBabar/quincy/issues"
+  },
+  "homepage": "https://github.com/PurpleBabar/quincy#readme"
+}
