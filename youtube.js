@@ -1,7 +1,11 @@
 
 var axios = require('axios');
 
+<<<<<<< HEAD
 function getContent(url, vids) {
+=======
+function createPlaylists(url, vids) {
+>>>>>>> bebe0880e8ed73426bc19514a07d687789861816
 
     return new Promise((resolve,reject)=>{
 

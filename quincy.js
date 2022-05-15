@@ -92,6 +92,7 @@ app.get('/youtube-return', function (req, res) {
     facebookContent = facebook.getContent(url, vids);
 
     facebookContent.then(function(resolve, reject){
+<<<<<<< HEAD
         let years = Object.keys(vids);
         console.log();
 
@@ -118,6 +119,10 @@ app.get('/youtube-return', function (req, res) {
 
         handlePlaylist(vids, years, 0);
 
+=======
+
+        youtubeCreation = youtubeApi.createPlaylists(vids);
+>>>>>>> bebe0880e8ed73426bc19514a07d687789861816
 
     });
 
