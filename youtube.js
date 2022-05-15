@@ -1,5 +1,4 @@
 
-var request = require('request');
 var axios = require('axios');
 
 function getContent(url, vids) {
@@ -27,14 +26,16 @@ function getContent(url, vids) {
                                         return;
                                     }
                                     let idYoutube = matcher[1];
+                                    let year = parseInt(date.getFullYear());
+                                    let month = parseInt(date.getMonth()+1);
 
-                                    if (!vids[date.getFullYear()]) {
-                                        vids[date.getFullYear()] = {};
+                                    if (!vids[year]) {
+                                        vids[year] = {};
                                     }
-                                    if (!vids[date.getFullYear()][date.getMonth()]) {
-                                        vids[date.getFullYear()][date.getMonth()] = [];
+                                    if (!vids[year][month]) {
+                                        vids[year][month] = [];
                                     }
-                                    vids[date.getFullYear()][date.getMonth()].push(idYoutube);
+                                    vids[year][month].push(idYoutube);
                                 }
                             }).catch(function (error) {
                             });
@@ -54,7 +55,30 @@ function getContent(url, vids) {
     });
 }
 
+function createPlaylist(oauth2Client, title){
 
+    var addParams = {
+        part: "snippet, status",
+        resource: {"status":{"privacyStatus":"public"},"snippet":{"title":title}},
+        auth: oauth2Client
+    };
+    var playlistAdd = youtube.playlists.insert(addParams, function (err, response) {
+
+    });
+}
+
+
+function addingVideo(oauth2Client,playlistId,video){
+
+    var paramsLinker = {
+        part: "snippet",
+        resource: {"snippet":{"playlistId": playlistId, "resourceId":{"videoId":video,"kind":"youtube#video"}}},
+        auth: oauth2Client
+    };
+    var playlistAdd = youtube.playlistItems.insert(paramsLinker, function (err, response) {
+        console.log(response);
+    });
+}
 module.exports = {
     getContent: getContent
 };
